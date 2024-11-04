@@ -1,4 +1,4 @@
-package logger
+package slog
 
 type buffer struct {
 	buf []byte
