@@ -39,8 +39,14 @@ func init() {
 	SetDefault(New())
 }
 
-func Default() *Logger     { return defaultLogger.Load().(*Logger) }
-func SetDefault(l *Logger) { defaultLogger.Store(l) }
+func Default() *Logger {
+	return defaultLogger.Load().(*Logger)
+}
+
+func SetDefault(l *Logger) *Logger {
+	defaultLogger.Store(l)
+	return Default()
+}
 
 func Debug(i ...any)                 { Default().Log(LevelDebug, "", i) }
 func Debugf(format string, i ...any) { Default().Log(LevelDebug, format, i) }
